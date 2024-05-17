@@ -1,0 +1,44 @@
+
+Relationship mapping of the entities:
+
+1. Admin
+    - One-to-many with User (one admin can manage many users)
+    - One-to-many with Blog (one admin can manage many blogs)
+    - One-to-many with Post (one admin can manage many posts)
+    - One-to-many with Comment (one admin can manage many comments)
+2. User
+    - One-to-many with Blog (one user can create many blogs)
+    - One-to-many with Post (one user can create many posts)
+    - One-to-many with Comment (one user can create many comments)
+    - Many-to-one with Subscriber (one subscriber can be a user)
+3. Subscriber
+    - Many-to-one with User (one subscriber is a user)
+    - One-to-many with Post (one subscriber can create many posts)
+    - One-to-many with Comment (one subscriber can create many comments)
+4. Blog
+    - Many-to-one with User (one blog belongs to one user)
+    - One-to-many with Post (one blog can have many posts)
+    - Many-to-many with Category (one blog can have many categories)
+    - Many-to-many with Tag (one blog can have many tags)
+5. Post
+    - Many-to-one with Blog (one post belongs to one blog)
+    - Many-to-one with User (one post is created by one user)
+    - Many-to-one with Subscriber (one post is created by one subscriber)
+    - One-to-many with Comment (one post can have many comments)
+    - One-to-many with Like (one post can have many likes)
+6. Comment
+    - Many-to-one with Post (one comment belongs to one post)
+    - Many-to-one with User (one comment is created by one user)
+    - Many-to-one with Subscriber (one comment is created by one subscriber)
+7. Like
+    - Many-to-one with Post (one like belongs to one post)
+    - Many-to-one with User (one like is created by one user)
+    - Many-to-one with Subscriber (one like is created by one subscriber)
+8. Category
+    - Many-to-many with Blog (one category can be assigned to many blogs)
+    - Many-to-many with Post (one category can be assigned to many posts)
+9. Tag
+    - Many-to-many with Blog (one tag can be assigned to many blogs)
+    - Many-to-many with Post (one tag can be assigned to many posts)
+10. Image
+    - Many-to-one with Post (one image is used in one post)
