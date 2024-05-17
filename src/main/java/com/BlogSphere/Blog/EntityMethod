@@ -1,0 +1,59 @@
+The methods each entity can perform:
+
+1. Admin:
+    - Manage users (create, update, delete)
+    - Manage blogs (create, update, delete)
+    - Manage posts (create, update, delete)
+    - Manage comments (create, update, delete)
+    - Assign categories to blogs and posts
+    - Assign tags to blogs and posts
+
+2. User:
+    - Create blog
+    - Create post
+    - Create comment
+    - Like post
+    - Subscribe to blog
+
+3. Subscriber:
+    - Create post
+    - Create comment
+    - Like post
+
+4. Blog:
+    - Add post
+    - Add category
+    - Add tag
+    - Remove post
+    - Remove category
+    - Remove tag
+
+5. Post:
+    - Add comment
+    - Add like
+    - Remove comment
+    - Remove like
+    - Assign category
+    - Assign tag
+
+6. Comment:
+    - Reply to comment
+    - Like comment
+
+7. Like:
+    - None (likes are passive records)
+
+8. Category:
+    - Assign to blog
+    - Assign to post
+    - Remove from blog
+    - Remove from post
+
+9. Tag:
+    - Assign to blog
+    - Assign to post
+    - Remove from blog
+    - Remove from post
+
+10. Image:
+    - Upload to post
