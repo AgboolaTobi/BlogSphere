@@ -1,9 +1,10 @@
 package com.BlogSphere.Blog.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Setter
 @Getter
@@ -15,4 +16,12 @@ public class User {
     private String password;
     private String email;
     private Role role;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Blog> blogs;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Post> posts;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Comment> comments;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Subscriber subscriber;
 }

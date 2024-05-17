@@ -1,11 +1,10 @@
 package com.BlogSphere.Blog.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Setter
@@ -18,4 +17,13 @@ public class Admin {
     private String password;
     private String email;
     private Role role;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<User> users;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Blog> blogs;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Post> posts;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Comment> comments;
+
 }

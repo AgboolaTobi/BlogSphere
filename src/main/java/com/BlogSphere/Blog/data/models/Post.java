@@ -1,13 +1,11 @@
 package com.BlogSphere.Blog.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Setter
 @Getter
@@ -20,5 +18,15 @@ public class Post {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
+    private Category category;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Blog blog;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Subscriber subscriber;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Comment> comments;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Reaction> reactions;
 }
