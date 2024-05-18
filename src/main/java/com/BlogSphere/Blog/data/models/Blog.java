@@ -12,18 +12,20 @@ import java.util.List;
 @Entity
 public class Blog {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long userId;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Enumerated(EnumType.STRING)
     private Category category;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
-    @OneToMany(fetch = FetchType.EAGER)
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private User user;
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Post> posts;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Tag> tags;
 
 }
