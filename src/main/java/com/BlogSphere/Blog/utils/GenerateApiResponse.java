@@ -18,6 +18,7 @@ public class GenerateApiResponse {
     public static final String INVALID_USER = "Invalid user";
     public static final String BLOG_TITLE_ALREADY_SUBMITTED = "A blog with this title already exist";
     public static final String POST_SUCCESSFULLY_MADE = "Post created successfully";
+    public static final String LIKED_SUCCESSFULLY = "Liked successfully";
 
     public static ApiResponse created(Object data) {
 
@@ -25,6 +26,16 @@ public class GenerateApiResponse {
                 .data(data)
                 .httpStatus(HttpStatus.CREATED)
                 .statusCode(HttpStatus.CREATED.value())
+                .isSuccessful(true)
+                .build();
+    }
+
+    public static ApiResponse OK(Object data) {
+
+        return ApiResponse.builder()
+                .data(data)
+                .httpStatus(HttpStatus.OK)
+                .statusCode(HttpStatus.OK.value())
                 .isSuccessful(true)
                 .build();
     }

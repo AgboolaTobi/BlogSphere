@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 public class PostCreationRequest {
     private Long id;
+    private Long userId;
     private Long blogId;
     private Category category;
     private String title;

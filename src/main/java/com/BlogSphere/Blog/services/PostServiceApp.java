@@ -17,10 +17,11 @@ public class PostServiceApp implements PostService{
     @Override
     public ApiResponse createPost(PostCreationRequest request) {
         Post post = new Post();
-        post.setTitle(request.getTitle());
-        post.setContent(request.getContent());
+        post.setUserId(request.getUserId());
         post.setBlogId(request.getBlogId());
         post.setCategory(request.getCategory());
+        post.setTitle(request.getTitle());
+        post.setContent(request.getContent());
         post.setCreatedAt(request.getCreatedAt());
 
         postRepository.save(post);

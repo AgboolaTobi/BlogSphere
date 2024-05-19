@@ -14,11 +14,11 @@ public class Reaction {
     private Long userId;
     private Long postId;
 
-//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//    private Post post;
-//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//    private User user;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Post post;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private User user;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Subscriber subscriber;
 
 }

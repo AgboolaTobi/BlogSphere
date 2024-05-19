@@ -35,7 +35,7 @@ public class BlogTests {
     }
 
     @Test
-    public void testThatAUserCanCreateMoreThankOneBlog() throws BlogException {
+    public void testThatAUserCanCreateMoreThanOneBlog() throws BlogException {
         BlogCreationRequest request = new BlogCreationRequest();
         request.setUserEmail("tobi4tee@gmail.com");
         request.setUserId(1L);

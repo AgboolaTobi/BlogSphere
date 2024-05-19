@@ -20,6 +20,7 @@ public class PostTest {
     @Test
     public void testThatARegisteredUserWithABlogCanCreateAPost() {
         PostCreationRequest request = new PostCreationRequest();
+        request.setUserId(1L);
         request.setBlogId(1L);
         request.setCategory(Category.SPORTS);
         request.setTitle("23/24 La liga Rounds up");
