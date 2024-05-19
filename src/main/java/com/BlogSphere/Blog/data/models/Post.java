@@ -14,6 +14,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long userId;
     private Long blogId;
     private String title;
     private String content;
@@ -22,11 +23,7 @@ public class Post {
     @Enumerated(EnumType.STRING)
     private Category category;
 //    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//    private Blog blog;
-//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-//    private User user;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private Subscriber subscriber;
+//    private Subscriber subscriber;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Comment> comments;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

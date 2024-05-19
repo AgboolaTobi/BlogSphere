@@ -11,10 +11,13 @@ public class Reaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private Post post;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private User user;
+    private Long userId;
+    private Long postId;
+
+//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private Post post;
+//    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    private User user;
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Subscriber subscriber;
 

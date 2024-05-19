@@ -17,6 +17,7 @@ public class GenerateApiResponse {
     public static final String BLOG_SUCCESSFULLY_CREATED = "Blog successfully created";
     public static final String INVALID_USER = "Invalid user";
     public static final String BLOG_TITLE_ALREADY_SUBMITTED = "A blog with this title already exist";
+    public static final String POST_SUCCESSFULLY_MADE = "Post created successfully";
 
     public static ApiResponse created(Object data) {
 
