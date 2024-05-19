@@ -1,6 +1,9 @@
 package com.BlogSphere.Blog.PostTests;
 
 import com.BlogSphere.Blog.data.models.Category;
+import com.BlogSphere.Blog.data.repositories.CommentRepository;
+import com.BlogSphere.Blog.data.repositories.PostRepository;
+import com.BlogSphere.Blog.dtos.requests.GetPostCommentsRequest;
 import com.BlogSphere.Blog.dtos.requests.PostUpdateRequest;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
 import com.BlogSphere.Blog.services.PostService;
@@ -17,6 +20,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PostTest {
     @Autowired
     private PostService postService;
+    @Autowired
+    private CommentRepository commentRepository;
+    @Autowired
+    private PostRepository postRepository;
+
     @Test
     public void testThatARegisteredUserWithABlogCanCreateAPost() {
         PostCreationRequest request = new PostCreationRequest();
@@ -32,15 +40,13 @@ public class PostTest {
 
     }
 
-//    @Test
-//            public void testThatARegisteredUserWithABlogCanUpdateAPost() {
-//        PostUpdateRequest request = new PostUpdateRequest();
-//        request.setPostId(1L);
-//        request.setContent("Update made on post");
-//        request.setTitle("Updated sports news");
-//
-//        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.POST_UPDATED_SUCCESSFULLY).getHttpStatus(),postService.updatePost(request).getHttpStatus());
-//
-//    }
+
+    @Test
+    public void testToGetAllCommentsOnPost(){
+        GetPostCommentsRequest request = new GetPostCommentsRequest();
+        request.setPostId(1L);
+
+        assertEquals(commentRepository.count(),postService.getAllComments(request));
+    }
 
 }

@@ -1,14 +1,19 @@
 package com.BlogSphere.Blog.services;
 
 
+import com.BlogSphere.Blog.data.models.Comment;
 import com.BlogSphere.Blog.data.models.Post;
 import com.BlogSphere.Blog.data.repositories.PostRepository;
+import com.BlogSphere.Blog.dtos.requests.GetPostCommentsRequest;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.PostUpdateRequest;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -28,6 +33,11 @@ public class PostServiceApp implements PostService{
         postRepository.save(post);
 
         return GenerateApiResponse.created(GenerateApiResponse.POST_SUCCESSFULLY_MADE);
+    }
+
+    @Override
+    public List<Comment> getAllComments(GetPostCommentsRequest request) {
+
     }
 
 
