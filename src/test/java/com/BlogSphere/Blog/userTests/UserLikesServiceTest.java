@@ -3,6 +3,7 @@ package com.BlogSphere.Blog.userTests;
 import com.BlogSphere.Blog.data.models.Role;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
+import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.UserService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
@@ -64,19 +65,16 @@ public class UserLikesServiceTest {
 
     }
 
-//    @Test
-//    public void testThatUserCanCreateBlog() throws BlogException {
-//        UserBlogCreationRequest request = new UserBlogCreationRequest();
-//        request.setUserId(1L);
-//        request.setUserEmail("tobi4tee@gmail.com");
-//        request.setTitle("Sport Channel");
-//        request.setDescription("A sport channel for all sport related news, ranging from football to volleyball");
-//        request.setCategory(Category.SPORTS);
-//        request.setCreatedAt(LocalDateTime.now());
-//
-//        assertEquals(GenerateApiResponse.created(GenerateApiResponse.BLOG_SUCCESSFULLY_CREATED).getHttpStatus(),userService.createUserBlog(request).getHttpStatus());
-//
-//    }
+    @Test
+    public void testThatUserCanUpdateProfile(){
+        UserUpdateProfileRequest request = new UserUpdateProfileRequest();
+        request.setUserId(1L);
+        request.setEmail("lanlehintifegrace@gmail.com");
+        request.setPassword("13071994Temmylove.");
+        request.setUsername("Boluwatife");
+
+        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.USER_PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(),userService.updateProfile(request).getStatusCode());
+    }
 
 
 }

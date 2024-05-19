@@ -4,6 +4,7 @@ package com.BlogSphere.Blog.services;
 import com.BlogSphere.Blog.data.models.Post;
 import com.BlogSphere.Blog.data.repositories.PostRepository;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
+import com.BlogSphere.Blog.dtos.requests.PostUpdateRequest;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
@@ -28,4 +29,6 @@ public class PostServiceApp implements PostService{
 
         return GenerateApiResponse.created(GenerateApiResponse.POST_SUCCESSFULLY_MADE);
     }
+
+
 }

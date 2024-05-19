@@ -5,4 +5,5 @@ import com.BlogSphere.Blog.utils.ApiResponse;
 
 public interface PostService {
     ApiResponse createPost(PostCreationRequest request);
+
 }

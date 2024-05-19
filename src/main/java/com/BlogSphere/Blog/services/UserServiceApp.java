@@ -4,11 +4,14 @@ import com.BlogSphere.Blog.data.models.User;
 import com.BlogSphere.Blog.data.repositories.BlogRepository;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
+import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 import static com.BlogSphere.Blog.utils.Verification.verifyEmail;
 import static com.BlogSphere.Blog.utils.Verification.verifyPassword;
@@ -33,6 +36,19 @@ public class UserServiceApp implements UserService {
         userRepository.save(user);
 
         return GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL);
+    }
+
+    @Override
+    public ApiResponse updateProfile(UserUpdateProfileRequest request) {
+        Optional<User> existingUser = userRepository.findById(request.getUserId());
+        existingUser.ifPresent(user -> {
+            user.setUsername(request.getUsername());
+            user.setEmail(request.getEmail());
+            user.setPassword(request.getPassword());
+            userRepository.save(user);
+        });
+
+        return GenerateApiResponse.updated(GenerateApiResponse.USER_PROFILE_UPDATED_SUCCESSFULLY);
     }
 
 

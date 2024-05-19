@@ -1,7 +1,7 @@
 package com.BlogSphere.Blog.PostTests;
 
 import com.BlogSphere.Blog.data.models.Category;
-import com.BlogSphere.Blog.data.repositories.PostRepository;
+import com.BlogSphere.Blog.dtos.requests.PostUpdateRequest;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
 import com.BlogSphere.Blog.services.PostService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
@@ -31,4 +31,16 @@ public class PostTest {
         assertEquals(GenerateApiResponse.created(GenerateApiResponse.POST_SUCCESSFULLY_MADE).getStatusCode(),postService.createPost(request).getStatusCode());
 
     }
+
+//    @Test
+//            public void testThatARegisteredUserWithABlogCanUpdateAPost() {
+//        PostUpdateRequest request = new PostUpdateRequest();
+//        request.setPostId(1L);
+//        request.setContent("Update made on post");
+//        request.setTitle("Updated sports news");
+//
+//        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.POST_UPDATED_SUCCESSFULLY).getHttpStatus(),postService.updatePost(request).getHttpStatus());
+//
+//    }
+
 }

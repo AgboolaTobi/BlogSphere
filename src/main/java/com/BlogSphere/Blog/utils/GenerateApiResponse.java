@@ -15,11 +15,13 @@ public class GenerateApiResponse {
          \s""";
     public static final String INVALID_EMAIL_FORMAT = "Invalid email format";
     public static final String BLOG_SUCCESSFULLY_CREATED = "Blog successfully created";
-    public static final String INVALID_USER = "Invalid user";
-    public static final String BLOG_TITLE_ALREADY_SUBMITTED = "A blog with this title already exist";
     public static final String POST_SUCCESSFULLY_MADE = "Post created successfully";
-    public static final String LIKED_SUCCESSFULLY = "Liked successfully";
     public static final String COMMENT_SUCCESSFULLY_SUBMITTED = "Comment submission successfully";
+    public static final String POST_UPDATED_SUCCESSFULLY = "Post updated successfully";
+    public static final String BLOG_UPDATED_SUCCESSFULLY = "Blog updated successfully";
+    public static final String BLOG_NOT_FOUND = "Blog not found";
+    public static final String USER_PROFILE_UPDATED_SUCCESSFULLY = "User profile updated successfully";
+    public static final String LIST_POSTS_RETURNED = "Blog posts";
 
     public static ApiResponse created(Object data) {
 
@@ -41,4 +43,12 @@ public class GenerateApiResponse {
                 .build();
     }
 
+    public static ApiResponse updated(Object data) {
+        return ApiResponse.builder()
+                .data(data)
+                .httpStatus(HttpStatus.OK)
+                .statusCode(HttpStatus.OK.value())
+                .isSuccessful(true)
+                .build();
+    }
 }
