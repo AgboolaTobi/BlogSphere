@@ -27,5 +27,5 @@ public class Post {
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Comment> comments;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Reaction> reactions;
+    private List<Likes> likes;
 }

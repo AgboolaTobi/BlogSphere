@@ -19,6 +19,7 @@ public class GenerateApiResponse {
     public static final String BLOG_TITLE_ALREADY_SUBMITTED = "A blog with this title already exist";
     public static final String POST_SUCCESSFULLY_MADE = "Post created successfully";
     public static final String LIKED_SUCCESSFULLY = "Liked successfully";
+    public static final String COMMENT_SUCCESSFULLY_SUBMITTED = "Comment submission successfully";
 
     public static ApiResponse created(Object data) {
 

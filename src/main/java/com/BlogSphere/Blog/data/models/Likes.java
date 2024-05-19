@@ -9,20 +9,19 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
-public class Comment {
+public class Likes {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long userId;
     private Long postId;
-    private String content;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private User user;
-//    @ManyToOne(fetch = FetchType.EAGER)
+
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    private Post post;
-//    @ManyToOne(fetch = FetchType.EAGER)
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private User user;
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    private Subscriber subscriber;
 
 }

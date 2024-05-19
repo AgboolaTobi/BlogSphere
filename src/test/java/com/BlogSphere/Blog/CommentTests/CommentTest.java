@@ -1,0 +1,25 @@
+package com.BlogSphere.Blog.CommentTests;
+
+import com.BlogSphere.Blog.dtos.requests.CommentRequest;
+import com.BlogSphere.Blog.utils.GenerateApiResponse;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.time.LocalDateTime;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@SpringBootTest
+public class CommentTest {
+
+    @Test
+    public void testThatPostCanBeCommentedOn(){
+        CommentRequest request = new CommentRequest();
+        request.setUserId(1L);
+        request.setPostId(1L);
+        request.setContent("This is a comment");
+        request.setCreatedAt(LocalDateTime.now());
+
+        assertEquals(GenerateApiResponse.created(GenerateApiResponse.COMMENT_SUCCESSFULLY_SUBMITTED).getHttpStatus(),commentService.createComment(request).getHttpStatus());
+    }
+}
