@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-public class UserLikesServiceTest {
+public class UserServiceTest {
    @Autowired
    private UserService userService;
     @Autowired

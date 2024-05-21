@@ -1,7 +1,6 @@
 package com.BlogSphere.Blog.services;
 
 import com.BlogSphere.Blog.data.models.User;
-import com.BlogSphere.Blog.data.repositories.BlogRepository;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
 import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;

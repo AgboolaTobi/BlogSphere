@@ -38,6 +38,7 @@ public class PostServiceApp implements PostService{
     @Override
     public List<Comment> getAllComments(GetPostCommentsRequest request) {
 
+        return null;
     }
 
 
