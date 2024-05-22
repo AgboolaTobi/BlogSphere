@@ -1,11 +1,10 @@
 package com.BlogSphere.Blog.userTests;
 
-import com.BlogSphere.Blog.data.models.Role;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
 import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
-import com.BlogSphere.Blog.services.UserService;
+import com.BlogSphere.Blog.services.interfaces.UserService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class UserServiceTest {
    @Autowired
    private UserService userService;
-    @Autowired
-    private UserRepository userRepository;
 
     @Test
     public void testThatUserCanRegisterUser() throws BlogException {
         UserRegistrationRequest request = new UserRegistrationRequest();
         request.setEmail("tobi4tee@gmail.com");
-        request.setRole(Role.USER);
         request.setPassword("13071994Temmylove.");
         request.setUsername("AgboolaToby");
 
@@ -36,7 +32,6 @@ public class UserServiceTest {
     public void testThatMoreThanOneUserCanRegister() throws BlogException {
         UserRegistrationRequest request = new UserRegistrationRequest();
         request.setEmail("tifegrace@gmail.com");
-        request.setRole(Role.GUEST);
         request.setPassword("13071994Temmylove.");
         request.setUsername("Boluwatife");
 
@@ -47,7 +42,6 @@ public class UserServiceTest {
     public void testThatRegisteringWithInvalidEmailFormatThrowsException(){
         UserRegistrationRequest request = new UserRegistrationRequest();
         request.setEmail("tifegrace2@gmail");
-        request.setRole(Role.USER);
         request.setPassword("13071994Temmylove.");
         request.setUsername("Boluwatife");
         assertThrows(BlogException.class,()->userService.registerUser(request));
@@ -58,7 +52,6 @@ public class UserServiceTest {
     public void testThatRegisteringWithInvalidPasswordFormatThrowsException(){
         UserRegistrationRequest request = new UserRegistrationRequest();
         request.setEmail("aviaAgbola@gmail.com");
-        request.setRole(Role.ADMIN);
         request.setPassword("00 00 00 00 00");
         request.setUsername("Aduke");
         assertThrows(BlogException.class,()->userService.registerUser(request));

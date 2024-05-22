@@ -1,8 +1,9 @@
-package com.BlogSphere.Blog.services;
+package com.BlogSphere.Blog.services.implementations;
 
 import com.BlogSphere.Blog.data.models.Comment;
 import com.BlogSphere.Blog.data.repositories.CommentRepository;
 import com.BlogSphere.Blog.dtos.requests.CommentRequest;
+import com.BlogSphere.Blog.services.interfaces.CommentService;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;

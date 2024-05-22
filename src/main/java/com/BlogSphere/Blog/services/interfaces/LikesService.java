@@ -1,4 +1,4 @@
-package com.BlogSphere.Blog.services;
+package com.BlogSphere.Blog.services.interfaces;
 
 import com.BlogSphere.Blog.dtos.requests.LikePostRequest;
 

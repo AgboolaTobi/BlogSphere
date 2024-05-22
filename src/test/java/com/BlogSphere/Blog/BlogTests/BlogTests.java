@@ -1,24 +1,20 @@
 package com.BlogSphere.Blog.BlogTests;
 
 
-import com.BlogSphere.Blog.data.models.Blog;
 import com.BlogSphere.Blog.data.models.Category;
-import com.BlogSphere.Blog.data.models.Post;
 import com.BlogSphere.Blog.data.repositories.BlogRepository;
 import com.BlogSphere.Blog.data.repositories.PostRepository;
 import com.BlogSphere.Blog.dtos.requests.BlogCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.BlogUpdateRequest;
-import com.BlogSphere.Blog.dtos.requests.GetAllPostRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
-import com.BlogSphere.Blog.services.BlogService;
-import com.BlogSphere.Blog.services.PostService;
+import com.BlogSphere.Blog.services.interfaces.BlogService;
+import com.BlogSphere.Blog.services.interfaces.PostService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,10 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BlogTests {
     @Autowired
     private BlogService blogService;
-    @Autowired
-    private PostService postService;
-    @Autowired
-    private BlogRepository blogRepository;
     @Autowired
     private PostRepository postRepository;
 

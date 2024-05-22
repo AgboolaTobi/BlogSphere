@@ -1,9 +1,9 @@
-package com.BlogSphere.Blog.services;
+package com.BlogSphere.Blog.services.implementations;
 
 import com.BlogSphere.Blog.data.models.Likes;
 import com.BlogSphere.Blog.data.repositories.LikeRepository;
 import com.BlogSphere.Blog.dtos.requests.LikePostRequest;
-import com.BlogSphere.Blog.dtos.requests.ReactionRequest;
+import com.BlogSphere.Blog.services.interfaces.LikesService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

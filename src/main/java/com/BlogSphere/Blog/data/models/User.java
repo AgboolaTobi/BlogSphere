@@ -17,13 +17,11 @@ public class User {
     private String password;
     private String email;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Blog> blogs;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Post> posts;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Comment> comments;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private Subscriber subscriber;
 }

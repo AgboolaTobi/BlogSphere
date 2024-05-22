@@ -22,7 +22,5 @@ public class Comment {
 //    private User user;
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    private Post post;
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Subscriber subscriber;
 
 }

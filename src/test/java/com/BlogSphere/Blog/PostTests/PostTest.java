@@ -4,9 +4,8 @@ import com.BlogSphere.Blog.data.models.Category;
 import com.BlogSphere.Blog.data.repositories.CommentRepository;
 import com.BlogSphere.Blog.data.repositories.PostRepository;
 import com.BlogSphere.Blog.dtos.requests.GetPostCommentsRequest;
-import com.BlogSphere.Blog.dtos.requests.PostUpdateRequest;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
-import com.BlogSphere.Blog.services.PostService;
+import com.BlogSphere.Blog.services.interfaces.PostService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,6 @@ public class PostTest {
     private PostService postService;
     @Autowired
     private CommentRepository commentRepository;
-    @Autowired
-    private PostRepository postRepository;
 
     @Test
     public void testThatARegisteredUserWithABlogCanCreateAPost() {

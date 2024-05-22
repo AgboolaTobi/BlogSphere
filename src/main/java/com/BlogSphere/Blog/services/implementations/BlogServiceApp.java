@@ -1,4 +1,4 @@
-package com.BlogSphere.Blog.services;
+package com.BlogSphere.Blog.services.implementations;
 
 import com.BlogSphere.Blog.data.models.Blog;
 import com.BlogSphere.Blog.data.models.Post;
@@ -10,6 +10,7 @@ import com.BlogSphere.Blog.dtos.requests.BlogCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.BlogUpdateRequest;
 import com.BlogSphere.Blog.dtos.requests.GetAllPostRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
+import com.BlogSphere.Blog.services.interfaces.BlogService;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class BlogServiceApp implements BlogService{
+public class BlogServiceApp implements BlogService {
 
     private final BlogRepository blogRepository;
     private final UserRepository userRepository;

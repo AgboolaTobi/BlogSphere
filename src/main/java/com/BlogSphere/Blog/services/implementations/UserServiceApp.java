@@ -1,10 +1,11 @@
-package com.BlogSphere.Blog.services;
+package com.BlogSphere.Blog.services.implementations;
 
 import com.BlogSphere.Blog.data.models.User;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
 import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
+import com.BlogSphere.Blog.services.interfaces.UserService;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
@@ -31,7 +32,6 @@ public class UserServiceApp implements UserService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setUsername(request.getUsername());
-        user.setRole(request.getRole());
         userRepository.save(user);
 
         return GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL);

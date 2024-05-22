@@ -21,7 +21,4 @@ public class Likes {
 //    private Post post;
 //    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    private User user;
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private Subscriber subscriber;
-
 }

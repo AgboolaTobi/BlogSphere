@@ -16,7 +16,7 @@ public class Admin {
     private String name;
     private String password;
     private String email;
-    private Role role;
+    private Role role = Role.ADMIN;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<User> users;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

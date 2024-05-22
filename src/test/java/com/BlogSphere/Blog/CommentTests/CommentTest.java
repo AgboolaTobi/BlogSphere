@@ -1,7 +1,7 @@
 package com.BlogSphere.Blog.CommentTests;
 
 import com.BlogSphere.Blog.dtos.requests.CommentRequest;
-import com.BlogSphere.Blog.services.CommentService;
+import com.BlogSphere.Blog.services.interfaces.CommentService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
