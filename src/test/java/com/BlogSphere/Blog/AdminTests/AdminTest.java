@@ -1,6 +1,8 @@
 package com.BlogSphere.Blog.AdminTests;
 
+import com.BlogSphere.Blog.dtos.requests.AdminLoginRequest;
 import com.BlogSphere.Blog.dtos.requests.AdminRegistrationRequest;
+import com.BlogSphere.Blog.dtos.responses.AdminLoginResponse;
 import com.BlogSphere.Blog.dtos.responses.AdminRegistrationResponse;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.interfaces.AdminService;
@@ -25,5 +27,22 @@ public class AdminTest {
 
         AdminRegistrationResponse response = adminService.registerAdmin(request);
         assertThat(response).isNotNull();
+    }
+
+    @Test
+    public void testThatAdminCanLogin() throws BlogException {
+        AdminLoginRequest request = new AdminLoginRequest();
+        request.setEmail("agboolaToby123@gmail.com");
+        request.setPassword("agboolaToby123");
+
+        AdminLoginResponse response = adminService.login(request);
+
+        assertThat(response).isNotNull();
+
+    }
+
+    @Test
+    public void testThatAdminCanUpdateProfile(){
+
     }
 }

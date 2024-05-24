@@ -3,7 +3,9 @@ package com.BlogSphere.Blog.services.implementations;
 import com.BlogSphere.Blog.data.models.Admin;
 import com.BlogSphere.Blog.data.models.Role;
 import com.BlogSphere.Blog.data.repositories.AdminRepository;
+import com.BlogSphere.Blog.dtos.requests.AdminLoginRequest;
 import com.BlogSphere.Blog.dtos.requests.AdminRegistrationRequest;
+import com.BlogSphere.Blog.dtos.responses.AdminLoginResponse;
 import com.BlogSphere.Blog.dtos.responses.AdminRegistrationResponse;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.interfaces.AdminService;
@@ -31,6 +33,19 @@ public class AdminServiceApp implements AdminService {
         response.setId(admin.getId());
         response.setMessage("Admin successfully registered");
 
+        return response;
+    }
+
+    @Override
+    public AdminLoginResponse login(AdminLoginRequest request) throws BlogException {
+        Admin existingAdmin = adminRepository.findByEmail(request.getEmail());
+        if (existingAdmin==null) throw new BlogException("Incorrect email");
+        if (!existingAdmin.getPassword().equals(request.getPassword())) throw new BlogException("Incorrect password");
+
+        existingAdmin.setLogin(true);
+        adminRepository.save(existingAdmin);
+        AdminLoginResponse response = new AdminLoginResponse();
+        response.setMessage("Admin successfully logged in");
         return response;
     }
 }
