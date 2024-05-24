@@ -5,8 +5,10 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class LikePostRequest {
+public class LikeCommentRequest {
     private Long userId;
     private Long postId;
+    private Long commentId;
+    private String comment;
 
 }

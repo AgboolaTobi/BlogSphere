@@ -15,6 +15,7 @@ public class Likes {
     private Long id;
     private Long userId;
     private Long postId;
+    private Long commentId;
     private LocalDateTime createdAt;
 
 //    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

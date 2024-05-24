@@ -16,6 +16,7 @@ public class Comment {
     private Long userId;
     private Long postId;
     private String content;
+    private int noOfLikes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 //    @ManyToOne(fetch = FetchType.EAGER)

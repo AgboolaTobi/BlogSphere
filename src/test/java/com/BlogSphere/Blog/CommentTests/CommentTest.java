@@ -1,6 +1,7 @@
 package com.BlogSphere.Blog.CommentTests;
 
 import com.BlogSphere.Blog.dtos.requests.CommentRequest;
+import com.BlogSphere.Blog.dtos.requests.LikeCommentRequest;
 import com.BlogSphere.Blog.services.interfaces.CommentService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import org.junit.jupiter.api.Test;
@@ -27,4 +28,5 @@ public class CommentTest {
 
         assertEquals(GenerateApiResponse.created(GenerateApiResponse.COMMENT_SUCCESSFULLY_SUBMITTED).getHttpStatus(),commentService.createComment(request).getHttpStatus());
     }
+
 }
