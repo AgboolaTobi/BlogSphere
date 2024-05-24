@@ -2,13 +2,11 @@ package com.BlogSphere.Blog.BlogTests;
 
 
 import com.BlogSphere.Blog.data.models.Category;
-import com.BlogSphere.Blog.data.repositories.BlogRepository;
 import com.BlogSphere.Blog.data.repositories.PostRepository;
 import com.BlogSphere.Blog.dtos.requests.BlogCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.BlogUpdateRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.interfaces.BlogService;
-import com.BlogSphere.Blog.services.interfaces.PostService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

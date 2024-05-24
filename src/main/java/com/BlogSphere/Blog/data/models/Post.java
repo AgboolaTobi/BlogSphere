@@ -18,6 +18,7 @@ public class Post {
     private Long blogId;
     private String title;
     private String content;
+    private int noOfLikes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     @Enumerated(EnumType.STRING)
