@@ -12,6 +12,8 @@ import com.BlogSphere.Blog.services.interfaces.AdminService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @AllArgsConstructor
 public class AdminServiceApp implements AdminService {
@@ -22,11 +24,11 @@ public class AdminServiceApp implements AdminService {
         boolean isRegistered = adminRepository.findByEmail(request.getEmail())!=null;
         if (isRegistered) throw new BlogException("Email already taken");
         Admin admin = new Admin();
-        admin.setRole(Role.ADMIN);
         admin.setName(request.getName());
         admin.setEmail(request.getEmail());
         admin.setPassword(request.getPassword());
-
+        admin.setRole(Role.ADMIN);
+        admin.setCreatedAt(LocalDateTime.now());
         adminRepository.save(admin);
 
         AdminRegistrationResponse response = new AdminRegistrationResponse();

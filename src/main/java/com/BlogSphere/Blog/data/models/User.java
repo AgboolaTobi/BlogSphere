@@ -17,7 +17,7 @@ public class User {
     private String password;
     private String email;
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    private Role role;
     private boolean isLogin;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Blog> blogs;

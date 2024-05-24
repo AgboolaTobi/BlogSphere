@@ -30,16 +30,30 @@ public class AdminTest {
     }
 
     @Test
+    public void testThatMultipleAdminCanRegister() throws BlogException {
+        AdminRegistrationRequest request = new AdminRegistrationRequest();
+        request.setName("Agboola Avia Ayomikun");
+        request.setEmail("agboolaAviaAyomikun123@gmail.com");
+        request.setPassword("aviaAyomikun123");
+
+
+        AdminRegistrationResponse response = adminService.registerAdmin(request);
+        assertThat(response).isNotNull();
+    }
+
+    @Test
     public void testThatAdminCanLogin() throws BlogException {
         AdminLoginRequest request = new AdminLoginRequest();
-        request.setEmail("agboolaToby123@gmail.com");
-        request.setPassword("agboolaToby123");
+        request.setEmail("agboolaAviaAyomikun123@gmail.com");
+        request.setPassword("aviaAyomikun123");
 
         AdminLoginResponse response = adminService.login(request);
 
         assertThat(response).isNotNull();
 
     }
+
+
 
     @Test
     public void testThatAdminCanUpdateProfile(){
