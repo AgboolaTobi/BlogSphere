@@ -10,5 +10,5 @@ public interface UserService {
     ApiResponse registerUser(UserRegistrationRequest request) throws BlogException;
 
 
-    ApiResponse updateProfile(UserUpdateProfileRequest request);
+    ApiResponse updateProfile(UserUpdateProfileRequest request) throws BlogException;
 }

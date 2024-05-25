@@ -1,5 +1,6 @@
 package com.BlogSphere.Blog.services.implementations;
 
+import com.BlogSphere.Blog.data.models.Role;
 import com.BlogSphere.Blog.data.models.User;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
@@ -32,21 +33,23 @@ public class UserServiceApp implements UserService {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setUsername(request.getUsername());
+        user.setRole(Role.USER);
+        user.setLogin(true);
         userRepository.save(user);
 
         return GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL);
     }
 
     @Override
-    public ApiResponse updateProfile(UserUpdateProfileRequest request) {
-        Optional<User> existingUser = userRepository.findById(request.getUserId());
-        existingUser.ifPresent(user -> {
-            user.setUsername(request.getUsername());
-            user.setEmail(request.getEmail());
-            user.setPassword(request.getPassword());
-            userRepository.save(user);
-        });
-
+    public ApiResponse updateProfile(UserUpdateProfileRequest request) throws BlogException {
+       User existingUser = userRepository.findByEmail(request.getEmail());
+       if (existingUser == null) throw new BlogException(GenerateApiResponse.INCORRECT_EMAIL);
+       if (existingUser.isLogin()) throw new BlogException(GenerateApiResponse.LOGIN_TO_UPDATE_PROFILE);
+       existingUser.setPassword(request.getPassword());
+       existingUser.setUsername(request.getUsername());
+       existingUser.setRole(Role.USER);
+       existingUser.setEmail(request.getEmail());
+       userRepository.save(existingUser);
         return GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY);
     }
 
