@@ -41,6 +41,7 @@ public class AdminServiceApp implements AdminService {
         if (!existingAdmin.getPassword().equals(request.getPassword())) throw new BlogException(GenerateApiResponse.LOGIN_TO_UPDATE_PROFILE);
 
         existingAdmin.setLogin(true);
+        adminRepository.save(existingAdmin);
 
         return GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY);
     }

@@ -64,7 +64,7 @@ class AdminTest {
     @Test
     public void testThatAdminCanUpdateProfile() throws BlogException {
         AdminUpdateProfileRequest request = new AdminUpdateProfileRequest();
-        request.setId(2L);
+        request.setId(1L);
         request.setName("Agboola Tobi Samuel");
         request.setEmail("agboolaToby123@gmail.com");
         request.setPassword("agboolaToby123");
