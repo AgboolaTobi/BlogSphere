@@ -1,6 +1,5 @@
 package com.BlogSphere.Blog.userTests;
 
-import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
 import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
@@ -66,7 +65,7 @@ public class UserServiceTest {
         request.setPassword("13071994Temmylove.");
         request.setUsername("Boluwatife");
 
-        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.USER_PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(),userService.updateProfile(request).getStatusCode());
+        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(),userService.updateProfile(request).getStatusCode());
     }
 
 

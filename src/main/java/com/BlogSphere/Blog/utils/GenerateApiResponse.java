@@ -17,11 +17,14 @@ public class GenerateApiResponse {
     public static final String BLOG_SUCCESSFULLY_CREATED = "Blog successfully created";
     public static final String POST_SUCCESSFULLY_MADE = "Post created successfully";
     public static final String COMMENT_SUCCESSFULLY_SUBMITTED = "Comment submission successfully";
-    public static final String POST_UPDATED_SUCCESSFULLY = "Post updated successfully";
     public static final String BLOG_UPDATED_SUCCESSFULLY = "Blog updated successfully";
     public static final String BLOG_NOT_FOUND = "Blog not found";
-    public static final String USER_PROFILE_UPDATED_SUCCESSFULLY = "User profile updated successfully";
-    public static final String LIST_POSTS_RETURNED = "Blog posts";
+    public static final String PROFILE_UPDATED_SUCCESSFULLY = "User profile updated successfully";
+    public static final String ADMIN_SUCCESSFULLY_REGISTERED = "Admin successfully registered";
+    public static final String INCORRECT_EMAIL = "Incorrect email";
+    public static final String LOGIN_TO_UPDATE_PROFILE = "Kindly login to update profile";
+    public static final String LOGIN_SUCCESSFULLY = "Login successful";
+    public static final String ADMIN_NOT_FOUND = "Admin not found";
 
     public static ApiResponse created(Object data) {
 

@@ -47,7 +47,7 @@ public class UserServiceApp implements UserService {
             userRepository.save(user);
         });
 
-        return GenerateApiResponse.updated(GenerateApiResponse.USER_PROFILE_UPDATED_SUCCESSFULLY);
+        return GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY);
     }
 
 

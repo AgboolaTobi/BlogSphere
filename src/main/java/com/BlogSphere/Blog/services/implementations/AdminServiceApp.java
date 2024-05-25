@@ -5,10 +5,11 @@ import com.BlogSphere.Blog.data.models.Role;
 import com.BlogSphere.Blog.data.repositories.AdminRepository;
 import com.BlogSphere.Blog.dtos.requests.AdminLoginRequest;
 import com.BlogSphere.Blog.dtos.requests.AdminRegistrationRequest;
-import com.BlogSphere.Blog.dtos.responses.AdminLoginResponse;
-import com.BlogSphere.Blog.dtos.responses.AdminRegistrationResponse;
+import com.BlogSphere.Blog.dtos.requests.AdminUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.interfaces.AdminService;
+import com.BlogSphere.Blog.utils.ApiResponse;
+import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,9 @@ public class AdminServiceApp implements AdminService {
     private final AdminRepository adminRepository;
 
     @Override
-    public AdminRegistrationResponse registerAdmin(AdminRegistrationRequest request) throws BlogException {
+    public ApiResponse registerAdmin(AdminRegistrationRequest request) throws BlogException {
         boolean isRegistered = adminRepository.findByEmail(request.getEmail())!=null;
-        if (isRegistered) throw new BlogException("Email already taken");
+        if (isRegistered) throw new BlogException(GenerateApiResponse.REGISTRATION_DETAILS_ALREADY_TAKEN);
         Admin admin = new Admin();
         admin.setName(request.getName());
         admin.setEmail(request.getEmail());
@@ -30,24 +31,34 @@ public class AdminServiceApp implements AdminService {
         admin.setRole(Role.ADMIN);
         admin.setCreatedAt(LocalDateTime.now());
         adminRepository.save(admin);
-
-        AdminRegistrationResponse response = new AdminRegistrationResponse();
-        response.setId(admin.getId());
-        response.setMessage("Admin successfully registered");
-
-        return response;
+        return GenerateApiResponse.created(GenerateApiResponse.ADMIN_SUCCESSFULLY_REGISTERED);
     }
 
     @Override
-    public AdminLoginResponse login(AdminLoginRequest request) throws BlogException {
+    public ApiResponse login(AdminLoginRequest request) throws BlogException {
         Admin existingAdmin = adminRepository.findByEmail(request.getEmail());
-        if (existingAdmin==null) throw new BlogException("Incorrect email");
-        if (!existingAdmin.getPassword().equals(request.getPassword())) throw new BlogException("Incorrect password");
+        if (existingAdmin==null) throw new BlogException(GenerateApiResponse.INCORRECT_EMAIL);
+        if (!existingAdmin.getPassword().equals(request.getPassword())) throw new BlogException(GenerateApiResponse.LOGIN_TO_UPDATE_PROFILE);
 
         existingAdmin.setLogin(true);
+
+        return GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY);
+    }
+
+    @Override
+    public ApiResponse updateProfile(AdminUpdateProfileRequest request) throws BlogException {
+        Admin existingAdmin = adminRepository.findById(request.getId()).orElse(null);
+        if (existingAdmin==null) throw new BlogException(GenerateApiResponse.ADMIN_NOT_FOUND);
+        if (!existingAdmin.isLogin()) throw new BlogException(GenerateApiResponse.LOGIN_TO_UPDATE_PROFILE);
+        existingAdmin.setEmail(request.getEmail());
+        existingAdmin.setName(request.getName());
+        existingAdmin.setPassword(request.getPassword());
+        existingAdmin.setRole(request.getRole());
+        existingAdmin.setUpdatedAt(LocalDateTime.now());
+
         adminRepository.save(existingAdmin);
-        AdminLoginResponse response = new AdminLoginResponse();
-        response.setMessage("Admin successfully logged in");
-        return response;
+
+        return GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY);
+
     }
 }
