@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+import static com.BlogSphere.Blog.utils.Verification.verifyEmail;
+
 @Service
 @AllArgsConstructor
 public class AdminServiceApp implements AdminService {
@@ -26,7 +28,6 @@ public class AdminServiceApp implements AdminService {
         if (isRegistered) throw new BlogException(GenerateApiResponse.REGISTRATION_DETAILS_ALREADY_TAKEN);
         if (request.getEmail()== null || request.getName()==null || request.getPassword() ==null)
             throw new BlogException(GenerateApiResponse.ALL_FIELDS_ARE_MANDATORY);
-        if (!verifyEmail(request.getEmail())) throw new
 
         Admin admin = new Admin();
         admin.setName(request.getName());
