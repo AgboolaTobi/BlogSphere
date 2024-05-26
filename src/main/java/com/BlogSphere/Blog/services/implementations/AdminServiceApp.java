@@ -24,14 +24,18 @@ public class AdminServiceApp implements AdminService {
     public ApiResponse registerAdmin(AdminRegistrationRequest request) throws BlogException {
         boolean isRegistered = adminRepository.findByEmail(request.getEmail())!=null;
         if (isRegistered) throw new BlogException(GenerateApiResponse.REGISTRATION_DETAILS_ALREADY_TAKEN);
+        if (request.getEmail()== null || request.getName()==null || request.getPassword() ==null)
+            throw new BlogException(GenerateApiResponse.ALL_FIELDS_ARE_MANDATORY);
+        if (!verifyEmail(request.getEmail())) throw new
+
         Admin admin = new Admin();
         admin.setName(request.getName());
-        admin.setEmail(request.getEmail());
+ admin.setEmail(request.getEmail());
         admin.setPassword(request.getPassword());
         admin.setRole(Role.ADMIN);
         admin.setCreatedAt(LocalDateTime.now());
         adminRepository.save(admin);
-        if (admin.getEmail()== null || admin.getName()==null || admin.getPassword() ==null) throw new BlogException(GenerateApiResponse.ALL_FIELDS_ARE_MANDATORY);
+
         return GenerateApiResponse.created(GenerateApiResponse.ADMIN_SUCCESSFULLY_REGISTERED);
     }
 
