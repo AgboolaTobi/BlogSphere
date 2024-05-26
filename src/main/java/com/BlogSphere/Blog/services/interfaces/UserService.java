@@ -1,5 +1,6 @@
 package com.BlogSphere.Blog.services.interfaces;
 
+import com.BlogSphere.Blog.dtos.requests.UserLoginRequest;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
 import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
@@ -11,4 +12,6 @@ public interface UserService {
 
 
     ApiResponse updateProfile(UserUpdateProfileRequest request) throws BlogException;
+
+    ApiResponse login(UserLoginRequest request) throws BlogException;
 }

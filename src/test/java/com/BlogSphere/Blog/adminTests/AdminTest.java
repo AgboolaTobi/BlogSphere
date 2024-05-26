@@ -29,7 +29,8 @@ class AdminTest {
         request.setPassword("agboolaToby123");
         request.setEmail("agboolaToby123@gmail.com");
 
-        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getStatusCode(), adminService.registerAdmin(request).getStatusCode());
+        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getStatusCode(),
+                adminService.registerAdmin(request).getStatusCode());
     }
 
     @Test
@@ -38,7 +39,8 @@ class AdminTest {
         request.setName("Agboola Avia Ayomikun");
         request.setEmail("agboolaAviaAyomikun123@gmail.com");
         request.setPassword("aviaAyomikun123");
-        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getStatusCode(), adminService.registerAdmin(request).getStatusCode());
+        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getStatusCode(),
+                adminService.registerAdmin(request).getStatusCode());
     }
 
     @Test
@@ -47,7 +49,8 @@ class AdminTest {
         request.setEmail("agboolaAviaAyomikun123@gmail.com");
         request.setPassword("aviaAyomikun123");
 
-        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY).getStatusCode(), adminService.login(request).getStatusCode());
+        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY).getStatusCode(),
+                adminService.login(request).getStatusCode());
     }
 
 
@@ -57,7 +60,8 @@ class AdminTest {
         request.setEmail("agboolaToby123@gmail.com");
         request.setPassword("agboolaToby123");
 
-        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY).getStatusCode(), adminService.login(request).getStatusCode());
+        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY).getStatusCode(),
+                adminService.login(request).getStatusCode());
 
     }
 
@@ -69,7 +73,8 @@ class AdminTest {
         request.setEmail("agboolaToby123@gmail.com");
         request.setPassword("agboolaToby123");
         request.setRole(Role.GUEST);
-        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(), adminService.updateProfile(request).getStatusCode());
+        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(),
+                adminService.updateProfile(request).getStatusCode());
     }
 
 

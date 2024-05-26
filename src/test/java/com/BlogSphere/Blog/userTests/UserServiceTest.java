@@ -1,5 +1,7 @@
 package com.BlogSphere.Blog.userTests;
 
+import com.BlogSphere.Blog.dtos.requests.AdminLoginRequest;
+import com.BlogSphere.Blog.dtos.requests.UserLoginRequest;
 import com.BlogSphere.Blog.dtos.requests.UserRegistrationRequest;
 import com.BlogSphere.Blog.dtos.requests.UserUpdateProfileRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
@@ -24,7 +26,8 @@ public class UserServiceTest {
         request.setPassword("13071994Temmylove.");
         request.setUsername("AgboolaToby");
 
-        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getHttpStatus(),userService.registerUser(request).getHttpStatus());
+        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getHttpStatus(),
+                userService.registerUser(request).getHttpStatus());
     }
 
     @Test
@@ -34,7 +37,8 @@ public class UserServiceTest {
         request.setPassword("13071994Temmylove.");
         request.setUsername("Boluwatife");
 
-        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getHttpStatus(),userService.registerUser(request).getHttpStatus());
+        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getHttpStatus(),
+                userService.registerUser(request).getHttpStatus());
     }
 
     @Test
@@ -58,14 +62,24 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testThatUserCanUpdateProfile(){
+    public void testThatUserCanLogin() throws BlogException {
+        UserLoginRequest request = new UserLoginRequest();
+        request.setEmail("tobi4tee@gmail.com");
+        request.setPassword("13071994Temmylove.");
+
+        assertEquals(GenerateApiResponse.OK(GenerateApiResponse.LOGIN_SUCCESSFULLY).getStatusCode(), userService.login(request).getStatusCode());
+    }
+
+    @Test
+    public void testThatUserCanUpdateProfile() throws BlogException {
         UserUpdateProfileRequest request = new UserUpdateProfileRequest();
         request.setUserId(1L);
-        request.setEmail("lanlehintifegrace@gmail.com");
-        request.setPassword("13071994Temmylove.");
-        request.setUsername("Boluwatife");
+        request.setEmail("tobiSam@gmail.com");
+        request.setPassword("tobiSam1234.");
+        request.setUsername("AgboolaToby");
 
-        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(),userService.updateProfile(request).getStatusCode());
+        assertEquals(GenerateApiResponse.updated(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY).getStatusCode(),
+                userService.updateProfile(request).getStatusCode());
     }
 
 

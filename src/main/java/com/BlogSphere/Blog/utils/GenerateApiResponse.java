@@ -25,6 +25,11 @@ public class GenerateApiResponse {
     public static final String LOGIN_TO_UPDATE_PROFILE = "Kindly login to update profile";
     public static final String LOGIN_SUCCESSFULLY = "Login successful";
     public static final String ADMIN_NOT_FOUND = "Admin not found";
+    public static final String ALL_FIELDS_ARE_MANDATORY = """
+            1. Email is mandatory
+            2. Password is mandatory
+            3. Email is mandatory
+            """;
 
     public static ApiResponse created(Object data) {
 

@@ -31,6 +31,7 @@ public class AdminServiceApp implements AdminService {
         admin.setRole(Role.ADMIN);
         admin.setCreatedAt(LocalDateTime.now());
         adminRepository.save(admin);
+        if (admin.getEmail()== null || admin.getName()==null || admin.getPassword() ==null) throw new BlogException(GenerateApiResponse.ALL_FIELDS_ARE_MANDATORY);
         return GenerateApiResponse.created(GenerateApiResponse.ADMIN_SUCCESSFULLY_REGISTERED);
     }
 
