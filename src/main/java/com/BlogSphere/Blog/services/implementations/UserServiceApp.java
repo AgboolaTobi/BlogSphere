@@ -58,6 +58,21 @@ public class UserServiceApp implements UserService {
     }
 
     @Override
+    public User findByEmail(String userEmail) {
+        return userRepository.findByEmail(userEmail);
+    }
+
+    @Override
+    public void save(User registeredUser) {
+        userRepository.save(registeredUser);
+    }
+
+    @Override
+    public User findById(Long userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
+
+    @Override
     public ApiResponse updateProfile(UserUpdateProfileRequest request) throws BlogException {
        User existingUser = userRepository.findById(request.getUserId()).orElse(null);
        if (existingUser == null) throw new BlogException(GenerateApiResponse.INCORRECT_EMAIL);

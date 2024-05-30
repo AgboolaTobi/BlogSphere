@@ -9,7 +9,9 @@ import com.BlogSphere.Blog.data.repositories.PostRepository;
 import com.BlogSphere.Blog.dtos.requests.LikeCommentRequest;
 import com.BlogSphere.Blog.dtos.requests.LikePostRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
+import com.BlogSphere.Blog.services.interfaces.CommentService;
 import com.BlogSphere.Blog.services.interfaces.LikesService;
+import com.BlogSphere.Blog.services.interfaces.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,8 @@ public class LikesServiceApp implements LikesService {
     private final LikeRepository likeRepository;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final PostService postService;
+    private final CommentService commentService;
 
     @Override
     public void likePost(LikePostRequest request) throws BlogException {
@@ -46,14 +50,14 @@ public class LikesServiceApp implements LikesService {
         likes.setPostId(request.getPostId());
         likes.setCommentId(request.getCommentId());
         likes.setCreatedAt(LocalDateTime.now());
-        Post existingPost = postRepository.findById(request.getPostId()).orElse(null);
+        Post existingPost = postService.findById(request.getPostId());
         if (existingPost == null) throw new BlogException("Post does not exist");
-        Comment comment = commentRepository.findById(request.getCommentId()).orElse(null);
+        Comment comment = commentService.findById(request.getCommentId());
         if (comment == null) throw new BlogException("Comment does not exist");
         comment.setNoOfLikes(comment.getNoOfLikes() + 1);
 
-        commentRepository.save(comment);
+        commentService.save(comment);
         likeRepository.save(likes);
-        postRepository.save(existingPost);
+        postService.save(existingPost);
     }
 }

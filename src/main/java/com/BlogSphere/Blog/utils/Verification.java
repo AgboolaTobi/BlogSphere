@@ -11,7 +11,7 @@ public class Verification {
     }
 
     public static boolean verifyPassword(String password) {
-        String regex = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}\\S";
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,16}$";
         return password.matches(regex);
     }
 

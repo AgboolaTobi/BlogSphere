@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-import static com.BlogSphere.Blog.utils.Verification.verifyEmail;
 
 @Service
 @AllArgsConstructor

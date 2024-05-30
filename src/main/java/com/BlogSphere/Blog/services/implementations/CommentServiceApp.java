@@ -25,4 +25,14 @@ public class CommentServiceApp implements CommentService {
 
         return GenerateApiResponse.created(GenerateApiResponse.COMMENT_SUCCESSFULLY_SUBMITTED);
     }
+
+    @Override
+    public Comment findById(Long commentId) {
+        return commentRepository.findById(commentId).get();
+    }
+
+    @Override
+    public void save(Comment comment) {
+        commentRepository.save(comment);
+    }
 }

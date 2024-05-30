@@ -11,6 +11,7 @@ import com.BlogSphere.Blog.dtos.requests.BlogUpdateRequest;
 import com.BlogSphere.Blog.dtos.requests.GetAllPostRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.interfaces.BlogService;
+import com.BlogSphere.Blog.services.interfaces.UserService;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
@@ -26,10 +27,11 @@ public class BlogServiceApp implements BlogService {
     private final BlogRepository blogRepository;
     private final UserRepository userRepository;
     private final PostRepository postRepository;
+    private final UserService userService;
 
     @Override
     public ApiResponse createBlog(BlogCreationRequest request) throws BlogException {
-        User registeredUser = userRepository.findByEmail(request.getUserEmail());
+        User registeredUser = userService.findByEmail(request.getUserEmail());
         if (registeredUser == null) throw new BlogException("User not found");
         Blog newBlog = new Blog();
         newBlog.setUserId(registeredUser.getId());
@@ -38,7 +40,7 @@ public class BlogServiceApp implements BlogService {
         newBlog.setDescription(request.getDescription());
         newBlog.setCreatedAt(request.getCreatedAt());
         blogRepository.save(newBlog);
-        userRepository.save(registeredUser);
+        userService.save(registeredUser);
 
         return GenerateApiResponse.created(GenerateApiResponse.BLOG_SUCCESSFULLY_CREATED);
 
