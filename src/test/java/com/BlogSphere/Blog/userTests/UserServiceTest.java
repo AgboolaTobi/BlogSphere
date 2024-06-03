@@ -49,6 +49,8 @@ public class UserServiceTest {
         request.setUsername("Boluwatife");
         assertThrows(BlogException.class,()->userService.registerUser(request));
 
+
+
     }
 
     @Test

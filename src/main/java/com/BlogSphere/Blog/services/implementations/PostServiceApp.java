@@ -1,19 +1,19 @@
 package com.BlogSphere.Blog.services.implementations;
 
 
-import com.BlogSphere.Blog.data.models.Comment;
-import com.BlogSphere.Blog.data.models.Post;
-import com.BlogSphere.Blog.data.models.User;
+import com.BlogSphere.Blog.data.models.*;
 import com.BlogSphere.Blog.data.repositories.PostRepository;
+import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.GetPostCommentsRequest;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
-import com.BlogSphere.Blog.services.interfaces.PostService;
-import com.BlogSphere.Blog.services.interfaces.UserService;
+import com.BlogSphere.Blog.dtos.responses.UploadImageResponse;
+import com.BlogSphere.Blog.services.interfaces.*;
 import com.BlogSphere.Blog.utils.ApiResponse;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -21,11 +21,16 @@ import java.util.List;
 public class PostServiceApp implements PostService {
     private final PostRepository postRepository;
     private final UserService userService;
+    private final UserRepository userRepository;
+    private final CloudinaryImagService cloudinaryService;
+    private final ImageService imageService;
+    private final BlogService blogService;
 
     @Override
-    public ApiResponse createPost(PostCreationRequest request) {
+    public ApiResponse createPost(PostCreationRequest request) throws IOException {
 
         User existingUser = userService.findById(request.getUserId());
+        List<Post> existingUserPosts = existingUser.getPosts();
         Post post = new Post();
         post.setUserId(request.getUserId());
         post.setBlogId(request.getBlogId());
@@ -33,10 +38,16 @@ public class PostServiceApp implements PostService {
         post.setTitle(request.getTitle());
         post.setContent(request.getContent());
         post.setCreatedAt(request.getCreatedAt());
-
+        existingUserPosts.add(post);
+        UploadImageResponse response =  cloudinaryService.uploadImage(request.getImageRequest());
+        List<Image> images = imageService.saveImage(response);
+        post.setImage(images);
         postRepository.save(post);
-        userService.save(existingUser);
+        blogService.add(post,request.getBlogId());
 
+//        userService.save(existingUser);
+
+        userRepository.save(existingUser);
         return GenerateApiResponse.created(GenerateApiResponse.POST_SUCCESSFULLY_MADE);
     }
 

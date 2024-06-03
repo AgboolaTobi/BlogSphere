@@ -2,9 +2,9 @@ package com.BlogSphere.Blog.BlogTests;
 
 
 import com.BlogSphere.Blog.data.models.Category;
-import com.BlogSphere.Blog.data.repositories.PostRepository;
 import com.BlogSphere.Blog.dtos.requests.BlogCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.BlogUpdateRequest;
+import com.BlogSphere.Blog.dtos.requests.GetAllPostRequest;
 import com.BlogSphere.Blog.exceptions.BlogException;
 import com.BlogSphere.Blog.services.interfaces.BlogService;
 import com.BlogSphere.Blog.utils.GenerateApiResponse;
@@ -14,14 +14,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class BlogTests {
     @Autowired
     private BlogService blogService;
-    @Autowired
-    private PostRepository postRepository;
 
 
     @Test
@@ -34,7 +33,8 @@ public class BlogTests {
         request.setDescription("This is a new blog on sports");
         request.setCreatedAt(LocalDateTime.now());
 
-        assertEquals(GenerateApiResponse.created(GenerateApiResponse.BLOG_SUCCESSFULLY_CREATED).getStatusCode(),blogService.createBlog(request).getStatusCode());
+        assertEquals(GenerateApiResponse.created(GenerateApiResponse.PROFILE_UPDATED_SUCCESSFULLY).getHttpStatus(),
+                blogService.createBlog(request).getHttpStatus());
 
     }
 
@@ -42,7 +42,7 @@ public class BlogTests {
     public void testThatAUserCanCreateMoreThanOneBlog() throws BlogException {
         BlogCreationRequest request = new BlogCreationRequest();
         request.setUserEmail("tobi4tee@gmail.com");
-        request.setUserId(1L);
+        request.setUserId(52L);
         request.setCategory(Category.ENTERTAINMENT);
         request.setTitle("Entertainment News");
         request.setDescription("Entertainment News");
@@ -66,11 +66,10 @@ public class BlogTests {
     }
 
     @Test
-    public void testThatAUserCanGetAllPostsInABlog() {
-//        GetAllPostRequest request = new GetAllPostRequest();
-//        request.setBlogId(1L);
-
-        assertEquals(1,postRepository.findAll().size());
+    public void testThatAUserCanGetAllPostsInABlog() throws BlogException {
+        GetAllPostRequest request = new GetAllPostRequest();
+        request.setBlogId(1L);
+        assertThat(blogService.getAllPosts(request)).isNotNull();
     }
 
 

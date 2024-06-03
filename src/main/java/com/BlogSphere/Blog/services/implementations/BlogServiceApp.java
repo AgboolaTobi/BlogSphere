@@ -4,8 +4,6 @@ import com.BlogSphere.Blog.data.models.Blog;
 import com.BlogSphere.Blog.data.models.Post;
 import com.BlogSphere.Blog.data.models.User;
 import com.BlogSphere.Blog.data.repositories.BlogRepository;
-import com.BlogSphere.Blog.data.repositories.PostRepository;
-import com.BlogSphere.Blog.data.repositories.UserRepository;
 import com.BlogSphere.Blog.dtos.requests.BlogCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.BlogUpdateRequest;
 import com.BlogSphere.Blog.dtos.requests.GetAllPostRequest;
@@ -25,14 +23,13 @@ import java.util.Optional;
 public class BlogServiceApp implements BlogService {
 
     private final BlogRepository blogRepository;
-    private final UserRepository userRepository;
-    private final PostRepository postRepository;
     private final UserService userService;
 
     @Override
     public ApiResponse createBlog(BlogCreationRequest request) throws BlogException {
         User registeredUser = userService.findByEmail(request.getUserEmail());
         if (registeredUser == null) throw new BlogException("User not found");
+        List<Blog> existingUserBlogs = registeredUser.getBlogs();
         Blog newBlog = new Blog();
         newBlog.setUserId(registeredUser.getId());
         newBlog.setCategory(request.getCategory());
@@ -40,8 +37,8 @@ public class BlogServiceApp implements BlogService {
         newBlog.setDescription(request.getDescription());
         newBlog.setCreatedAt(request.getCreatedAt());
         blogRepository.save(newBlog);
+        existingUserBlogs.add(newBlog);
         userService.save(registeredUser);
-
         return GenerateApiResponse.created(GenerateApiResponse.BLOG_SUCCESSFULLY_CREATED);
 
     }
@@ -66,6 +63,14 @@ public class BlogServiceApp implements BlogService {
         if (blog==null) throw new BlogException(GenerateApiResponse.BLOG_NOT_FOUND);
         return blog.getPosts();
 
+    }
+
+    @Override
+    public void add(Post post, Long blogId) {
+        Blog blog = blogRepository.findById(blogId).orElse(null);
+        assert blog != null;
+        blog.getPosts().add(post);
+        blogRepository.save(blog);
     }
 
 

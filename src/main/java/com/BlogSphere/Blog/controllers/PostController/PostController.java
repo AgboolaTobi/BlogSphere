@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("api/v1/post/")
 public class PostController {
@@ -19,7 +21,7 @@ public class PostController {
     private PostService postService;
 
     @PostMapping("post")
-    public ResponseEntity<ApiResponse> makePost(@RequestBody PostCreationRequest request) {
+    public ResponseEntity<ApiResponse> makePost(@RequestBody PostCreationRequest request) throws IOException {
         return new ResponseEntity<>(postService.createPost(request), HttpStatus.CREATED);
     }
 }

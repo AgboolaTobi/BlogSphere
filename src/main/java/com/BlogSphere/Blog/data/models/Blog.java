@@ -21,8 +21,6 @@ public class Blog {
     private LocalDateTime updatedAt;
     @Enumerated(EnumType.STRING)
     private Category category;
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private User user;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Post> posts;
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

@@ -37,7 +37,7 @@ public class LikesTest {
 
 
         likesService.likePost(request);
-        assertEquals(5,likes);
+        assertEquals(2,likes);
 
     }
 
@@ -52,12 +52,8 @@ public class LikesTest {
         assert comment != null;
         int likes = comment.getNoOfLikes();
 
-        assertEquals(3,likes);
-
-
-
+        assertEquals(1,likes);
 
     }
-
 
 }

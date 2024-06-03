@@ -30,8 +30,8 @@ public class UserServiceApp implements UserService {
     public ApiResponse registerUser(UserRegistrationRequest request) throws BlogException {
         boolean isRegistered = userRepository.findByEmail(request.getEmail()) !=null;
         if (isRegistered) throw new BlogException(GenerateApiResponse.REGISTRATION_DETAILS_ALREADY_TAKEN);
-        if (!verifyEmail(request.getEmail())) throw new BlogException(GenerateApiResponse.INVALID_EMAIL_FORMAT);
-        if (!verifyPassword(request.getPassword())) throw new BlogException(GenerateApiResponse.INVALID_PASSWORD_FORMAT);
+        if (verifyEmail(request.getEmail())) throw new BlogException(GenerateApiResponse.INVALID_EMAIL_FORMAT);
+        if (verifyPassword(request.getPassword())) throw new BlogException(GenerateApiResponse.INVALID_PASSWORD_FORMAT);
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
