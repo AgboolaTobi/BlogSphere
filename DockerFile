@@ -1,0 +1,13 @@
+FROM maven:3.8.7 as build
+
+COPY . .
+
+RUN mvn -B clean Package - DskipTests
+
+FROM openjdk:17
+
+COPY --from=build ./target/*.jar Blog.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["Java","-jar","Blog.jar"]
