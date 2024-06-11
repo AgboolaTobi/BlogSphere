@@ -1,8 +1,8 @@
-FROM maven:3.8.5-openjdk-17 AS build
-COPY ../.. .
-RUN mvn clean package -DskipTests
+FROM maven:3.8.7 as build
+COPY . .
+RUN mvn -B clean package -DskipTests
 
-FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/Blog-1.0-SNAPSHOT.jar Blog.jar
+FROM openjdk:17-jdk-slim
+COPY --from=build ./target/*.jar Blog.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "Blog.jar"]
+ENTRYPOINT ["java","-jar","Blog.jar"]
