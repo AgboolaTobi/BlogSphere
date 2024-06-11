@@ -4,5 +4,5 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
 COPY --from=build /target/Blog-1.0-SNAPSHOT.jar Blog.jar
-EXPOSE 9065
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "Blog.jar"]
