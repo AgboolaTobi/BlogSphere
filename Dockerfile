@@ -3,6 +3,6 @@ COPY . .
 RUN mvn -B clean package -DskipTests
 
 FROM openjdk:17-jdk-slim
-COPY --from=build ./target/*.jar blogsphere.jar
+COPY --from=build ./target/*.jar Blog.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","blogsphere.jar"]
+ENTRYPOINT ["java","-jar","Blog.jar"]
