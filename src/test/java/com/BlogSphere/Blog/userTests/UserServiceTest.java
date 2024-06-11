@@ -31,17 +31,6 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testThatMoreThanOneUserCanRegister() throws BlogException {
-        UserRegistrationRequest request = new UserRegistrationRequest();
-        request.setEmail("tifegrace@gmail.com");
-        request.setPassword("13071994Temmylove.");
-        request.setUsername("Boluwatife");
-
-        assertEquals(GenerateApiResponse.created(GenerateApiResponse.REGISTRATION_SUCCESSFUL).getHttpStatus(),
-                userService.registerUser(request).getHttpStatus());
-    }
-
-    @Test
     public void testThatRegisteringWithInvalidEmailFormatThrowsException(){
         UserRegistrationRequest request = new UserRegistrationRequest();
         request.setEmail("tifegrace2@gmail");

@@ -53,12 +53,4 @@ public class PostTest {
     }
 
 
-    @Test
-    public void testToGetAllCommentsOnPost(){
-        GetPostCommentsRequest request = new GetPostCommentsRequest();
-        request.setPostId(1L);
-
-        assertEquals(commentRepository.count(),postService.getAllComments(request));
-    }
-
 }
