@@ -24,8 +24,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/blogSphere:latest .
-        docker push ${{ secrets.DOCKER_USERNAME }}/blogSphere:latest
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/blogsphere:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/blogsphere:latest
 
 
     - name: Set up SSH
