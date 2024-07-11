@@ -40,7 +40,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t joshrichhy/fibonacci:latest .
+        run: docker build -t agboolatoby/blogsphere:latest .
 
       - name: Push Docker image to Docker Hub
         run: docker push agboolatoby/blogsphere:latest
