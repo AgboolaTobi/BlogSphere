@@ -1,6 +1,5 @@
 package com.BlogSphere.Blog.services.implementations;
 
-import com.BlogSphere.Blog.data.models.Admin;
 import com.BlogSphere.Blog.data.models.Role;
 import com.BlogSphere.Blog.data.models.User;
 import com.BlogSphere.Blog.data.repositories.UserRepository;
@@ -15,7 +14,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import static com.BlogSphere.Blog.utils.Verification.verifyEmail;
 import static com.BlogSphere.Blog.utils.Verification.verifyPassword;

@@ -1,6 +1,5 @@
 package com.BlogSphere.Blog.services.implementations;
 
-import com.BlogSphere.Blog.configs.CloudinaryConfig;
 import com.BlogSphere.Blog.dtos.requests.UploadImageRequest;
 import com.BlogSphere.Blog.dtos.responses.UploadImageResponse;
 import com.BlogSphere.Blog.services.interfaces.CloudinaryImagService;

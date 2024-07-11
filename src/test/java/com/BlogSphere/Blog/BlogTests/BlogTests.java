@@ -28,7 +28,7 @@ public class BlogTests {
         BlogCreationRequest request = new BlogCreationRequest();
         request.setUserEmail("tobi4tee@gmail.com");
         request.setUserId(1L);
-        request.setCategory(Category.SPORTS);
+        request.setCategory(Category.FOOTBALL);
         request.setTitle("Sport News");
         request.setDescription("This is a new blog on sports");
         request.setCreatedAt(LocalDateTime.now());
@@ -43,7 +43,7 @@ public class BlogTests {
         BlogCreationRequest request = new BlogCreationRequest();
         request.setUserEmail("tobi4tee@gmail.com");
         request.setUserId(52L);
-        request.setCategory(Category.ENTERTAINMENT);
+        request.setCategory(Category.MUSIC);
         request.setTitle("Entertainment News");
         request.setDescription("Entertainment News");
         request.setCreatedAt(LocalDateTime.now());

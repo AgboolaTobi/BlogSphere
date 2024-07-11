@@ -2,7 +2,6 @@ package com.BlogSphere.Blog.PostTests;
 
 import com.BlogSphere.Blog.data.models.Category;
 import com.BlogSphere.Blog.data.repositories.CommentRepository;
-import com.BlogSphere.Blog.dtos.requests.GetPostCommentsRequest;
 import com.BlogSphere.Blog.dtos.requests.PostCreationRequest;
 import com.BlogSphere.Blog.dtos.requests.UploadImageRequest;
 import com.BlogSphere.Blog.services.interfaces.PostService;
@@ -15,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -36,7 +34,7 @@ public class PostTest {
         PostCreationRequest request = new PostCreationRequest();
         request.setUserId(1L);
         request.setBlogId(1L);
-        request.setCategory(Category.SPORTS);
+        request.setCategory(Category.FOOTBALL);
         request.setTitle("23/24 La liga Rounds up");
         request.setContent("A quick look at the tables as the season closes in...");
         request.setCreatedAt(LocalDateTime.now());

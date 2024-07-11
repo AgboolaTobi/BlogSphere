@@ -1,9 +1,9 @@
 package com.BlogSphere.Blog.data.models;
 
 public enum Category {
-    NEWS,
-    SPORTS,
-    ENTERTAINMENT,
+    ROMANCE,
+    FOOTBALL,
+    MUSIC,
     POLITICS,
-    LIFESTYLE
+    ART
 }

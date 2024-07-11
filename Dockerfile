@@ -1,8 +1,11 @@
-FROM maven:3.8.7 as build
+FROM maven:3.8.7 AS build
+WORKDIR /app
 COPY . .
 RUN mvn -B clean package -DskipTests
 
-FROM openjdk:17-jdk-slim
-COPY --from=build ./target/*.jar Blog.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","Blog.jar"]
+# Run stage
+FROM openjdk:17
+WORKDIR /app
+COPY --from=build /app/target/*.jar Blog.jar
+EXPOSE 8000
+ENTRYPOINT ["java", "-jar", "Blog.jar"]
